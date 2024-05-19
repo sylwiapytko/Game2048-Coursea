@@ -41,7 +41,8 @@ class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
  * Add a new value produced by 'initializer' to a specified cell in a board.
  */
 fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-    TODO()
+    //if nextValue is not null ( there are empty Cells) set newValue to Cell
+    initializer.nextValue(this)?.let { (cell, value) -> this.set(cell, value) }
 }
 
 /*
