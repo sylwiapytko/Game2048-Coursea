@@ -19,26 +19,27 @@ package games.game2048
 */
 fun <T : Any> List<T?>.moveAndMergeEqual(merge: (T) -> T): List<T> {
     val newList = mutableListOf<T>()
+    val valueList = this.filterNotNull()
+    if (valueList.isNotEmpty()) {
+        val listIterator = valueList.listIterator()
+        var element = listIterator.next()
+        var listFinishedWithMerge = false
 
-    val listIterator = this.filterNotNull().listIterator()
-    var element = listIterator.next()
-    var listFinishedWithMerge = false
-
-    while (listIterator.hasNext()){
-        val nextElement = listIterator.next()
-        if(element.equals(nextElement)){
-            newList.add(merge(element))
-            if(listIterator.hasNext()) element = listIterator.next()
-            else listFinishedWithMerge = true
+        while (listIterator.hasNext()) {
+            val nextElement = listIterator.next()
+            if (element.equals(nextElement)) {
+                newList.add(merge(element))
+                if (listIterator.hasNext()) element = listIterator.next()
+                else listFinishedWithMerge = true
+            } else {
+                newList.add(element)
+                element = nextElement
+            }
         }
-        else{
-            newList.add(element)
-            element=nextElement
-        }
-    }
-    if(!listFinishedWithMerge) newList.add(element)
+        if (!listFinishedWithMerge) newList.add(element)
 
-    return newList
+        return newList
+    } else return emptyList()
 }
 
 

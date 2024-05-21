@@ -25,6 +25,7 @@ interface SquareBoard {
 
     fun getRow(i: Int, jRange: IntProgression): List<Cell>
     fun getColumn(iRange: IntProgression, j: Int): List<Cell>
+    fun getRoworColumn(isRow: Boolean, i: Int, reversed: Boolean): List<Cell>
 
     fun Cell.getNeighbour(direction: Direction): Cell?
 }

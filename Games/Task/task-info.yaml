@@ -48,7 +48,7 @@ files:
   - name: src/board/BoardImpl.kt
     visible: true
     placeholders:
-      - offset: 90
+      - offset: 2764
         length: 6
         placeholder_text: TODO()
         initial_state:
@@ -57,7 +57,7 @@ files:
         initialized_from_dependency: false
         selected: false
         status: Unchecked
-      - offset: 149
+      - offset: 2823
         length: 6
         placeholder_text: TODO()
         initial_state:
@@ -93,32 +93,32 @@ files:
   - name: src/games/game2048/Game2048.kt
     visible: true
     placeholders:
-      - offset: 1227
-        length: 6
+      - offset: 1296
+        length: 79
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 1227
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
-      - offset: 1705
-        length: 6
+      - offset: 1892
+        length: 209
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 1705
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
-      - offset: 2052
-        length: 6
+      - offset: 2104
+        length: 0
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 2052
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
     text: |-
       package games.game2048
@@ -193,14 +193,14 @@ files:
   - name: src/games/game2048/Game2048Helper.kt
     visible: true
     placeholders:
-      - offset: 730
-        length: 6
+      - offset: 1512
+        length: 0
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 730
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
     text: |+
       package games.game2048
@@ -229,14 +229,14 @@ files:
   - name: src/games/game2048/Game2048Initializer.kt
     visible: true
     placeholders:
-      - offset: 820
-        length: 6
+      - offset: 808
+        length: 121
         placeholder_text: TODO()
         initial_state:
           length: 6
           offset: 820
         initialized_from_dependency: false
-        selected: false
+        selected: true
         status: Unchecked
     text: |-
       package games.game2048

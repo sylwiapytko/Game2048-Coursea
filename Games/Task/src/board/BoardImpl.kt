@@ -29,15 +29,22 @@ open class SquareBoardImpl(override val width: Int) : SquareBoard {
     }
 
     override fun getColumn(iRange: IntProgression, j: Int): List<Cell> {
-        return if (iRange.last > iRange.first)
-            cells.filter { it.j == j && it.i in iRange }
-        else cells.filter { it.j == j && it.i in iRange }.reversed()
+        val columnCells = cells.filter { it.j == j && it.i in iRange }
+        return getReversed(iRange.last < iRange.first, columnCells)
     }
 
     override fun getRow(i: Int, jRange: IntProgression): List<Cell> {
-        return if (jRange.last > jRange.first)
-            cells.filter { it.i == i && it.j in jRange }
-        else cells.filter { it.i == i && it.j in jRange }.reversed()
+        val rowCells = cells.filter { it.i == i && it.j in jRange }
+        return getReversed(jRange.last < jRange.first, rowCells)
+    }
+
+    override fun getRoworColumn(isRow: Boolean, i: Int, reversed: Boolean): List<Cell> {
+        val currentCells = if (isRow) getRow(i, 1..width) else getColumn(1..width, i)
+        return getReversed(reversed, currentCells)
+    }
+
+    private fun getReversed(reversed: Boolean, currentCells: List<Cell>) : List<Cell> {
+        return if (reversed) currentCells.reversed() else currentCells
     }
 
     override fun Cell.getNeighbour(direction: Direction): Cell? {
@@ -57,7 +64,7 @@ class GameBoardImpl<T>(width: Int) : SquareBoardImpl(width), GameBoard<T> {
     val cellValues = mutableMapOf<Cell, T?>()
 
     init {
-        cells.forEach{cellValues.put(it, null)}
+        cells.forEach { cellValues.put(it, null) }
     }
 
     override fun get(cell: Cell): T? {
