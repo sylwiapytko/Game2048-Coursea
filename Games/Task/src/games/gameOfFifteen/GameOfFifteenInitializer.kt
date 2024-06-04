@@ -23,16 +23,11 @@ class RandomGameInitializer : GameOfFifteenInitializer {
     }
 
     private fun getPermutation(): List<Int> {
-        val permutationSet = mutableSetOf<Int>()
-        do {
-            while (permutationSet.size < 15) {
-                permutationSet.add((1..15).random())
-            }
-        } while (!isEven(permutationSet.toList()) || isTrivial(permutationSet.toList()))
-        return permutationSet.toList()
+        return  generateSequence { (1..15).shuffled() }
+            .first { isEven(it) && !isTrivial(it)}
     }
 
-    private fun isTrivial(permutation: List<Int>): Boolean{
+    private fun isTrivial(permutation: List<Int>): Boolean {
         return (1..15).toList().equals(permutation)
     }
 
